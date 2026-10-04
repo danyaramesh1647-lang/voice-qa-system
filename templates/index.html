@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voice Question Answering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Ask it out loud</h1>
+      <p class="lede">Tap the microphone and ask a question. The system converts your speech to text, finds the best answer in its knowledge base, shows it and reads it aloud.</p>
+    </header>
+
+    <section id="chat" aria-live="polite" aria-label="Conversation">
+      <p id="empty">No questions yet. Tap the microphone, type below, or pick an example.</p>
+    </section>
+
+    <p id="status" role="status"></p>
+
+    <div id="examples" class="chips" aria-label="Example questions">
+      <button type="button" class="chip" data-q="What is artificial intelligence?">What is artificial intelligence?</button>
+      <button type="button" class="chip" data-q="What is machine learning?">What is machine learning?</button>
+      <button type="button" class="chip" data-q="What is NLP?">What is NLP?</button>
+      <button type="button" class="chip" data-q="What is cloud computing?">What is cloud computing?</button>
+      <button type="button" class="chip" data-q="What is Python?">What is Python?</button>
+    </div>
+
+    <div class="bar">
+      <button id="mic" type="button" aria-label="Speak your question" aria-pressed="false">
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 15a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v5a4 4 0 0 0 4 4zm6-4a1 1 0 1 1 2 0 8 8 0 0 1-7 7.94V21h3a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h3v-2.06A8 8 0 0 1 4 11a1 1 0 1 1 2 0 6 6 0 0 0 12 0z"/></svg>
+      </button>
+      <label for="question" class="sr">Type your question</label>
+      <input id="question" type="text" maxlength="300" placeholder="Type a question, for example: What is Python?" autocomplete="off">
+      <button id="send" type="button">Ask</button>
+    </div>
+
+    <div class="tools">
+      <label><input type="checkbox" id="auto-read" checked> Read answers aloud</label>
+      <button id="stop" type="button" class="ghost" hidden>Stop speaking</button>
+      <button id="clear" type="button" class="ghost">Clear conversation</button>
+    </div>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
